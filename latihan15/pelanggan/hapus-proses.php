@@ -1,0 +1,24 @@
+<?php
+
+include("../config.php");
+
+if( isset($_GET['id'])) {
+    
+    //ambil id dari query string
+    $id = $_GET['id'];
+
+    // buat query hapus
+    $sql ="DELETE FROM pemilik WHERE id = $id";
+    $query = mysqli_query($connect, $sql);
+
+    //apakah query hapus berhasil?
+    if($query) {
+        header('location: index.php');
+    } else {
+        die("gagal menghapus....");
+    }
+}else {
+    die("akses dilarang...");
+}
+
+?>
